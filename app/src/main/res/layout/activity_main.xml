@@ -20,4 +20,10 @@
         android:id="@+id/btn_main"
         android:text="Активировать" />
 
+    <ListView
+        android:layout_marginTop="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/alarm_list" />
+
 </androidx.appcompat.widget.LinearLayoutCompat>

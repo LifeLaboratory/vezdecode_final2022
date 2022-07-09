@@ -8,6 +8,7 @@ import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
@@ -15,13 +16,17 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.messaging.FirebaseMessaging;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashSet;
 
 public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        ListView productList = findViewById(R.id.alarm_list);
         SharedPreferences sharedPreferences = getSharedPreferences("alarms", MODE_PRIVATE);
 
         FirebaseMessaging.getInstance().setAutoInitEnabled(true);
@@ -42,7 +47,9 @@ public class MainActivity extends AppCompatActivity {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
                     time = timePicker.getHour() + ":" + timePicker.getMinute();
                 editor.putString("time", time);
-                editor.apply();
+                HashSet<String> setWithTimes = (HashSet<String>) sharedPreferences.getStringSet("time", new HashSet<>());
+                setWithTimes.add(time);
+                editor.putStringSet("time", setWithTimes).apply();
                 Toast.makeText(getApplicationContext(), "Будильник активирован на " + time, Toast.LENGTH_LONG).show();
 
                 Intent myIntent = new Intent(getApplicationContext(), AlarmService.class);
@@ -54,8 +61,14 @@ public class MainActivity extends AppCompatActivity {
                 calendar.add(Calendar.SECOND, 10);
                 long frequency = 10 * 1000;
                 alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), frequency, pendingIntent);
+
+                AlarmAdapter adapter = new AlarmAdapter(this, R.layout.alarm_item, new ArrayList<>(sharedPreferences.getStringSet("time", new HashSet<>())));
+                productList.setAdapter(adapter);
             });
         }
+
+        AlarmAdapter adapter = new AlarmAdapter(this, R.layout.alarm_item, new ArrayList<>(sharedPreferences.getStringSet("time", new HashSet<>())));
+        productList.setAdapter(adapter);
     }
 
 

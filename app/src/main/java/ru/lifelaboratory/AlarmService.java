@@ -11,26 +11,35 @@ import android.media.MediaPlayer;
 import android.os.Build;
 import android.util.Log;
 
+import androidx.annotation.RequiresApi;
 import androidx.core.app.NotificationCompat;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashSet;
 
 public class AlarmService extends BroadcastReceiver {
 
     static MediaPlayer mediaPlayer;
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public void onReceive(Context context, Intent intent) {
 
         SharedPreferences sharedPreferences = context.getSharedPreferences("alarms", context.MODE_PRIVATE);
-        Log.e("Life", sharedPreferences.getString("time", "99:99"));
+        Log.e("Life", String.valueOf(sharedPreferences.getStringSet("time", new HashSet<>())));
 
         Date currentTime = Calendar.getInstance().getTime();
-        if ((currentTime.getHours() + ":" + currentTime.getMinutes()).equals(sharedPreferences.getString("time", "99:99"))) {
-            showNotification(context, "Будильник", "Пора вставать, прям 100%");
-            sharedPreferences.edit().clear().apply();
-        }
+        HashSet<String> alarms = (HashSet<String>) sharedPreferences.getStringSet("time", new HashSet<>());
+        HashSet<String> newAlarms = new HashSet<>();
+        alarms.forEach(element -> {
+            String currentTimeStr = currentTime.getHours() + ":" + currentTime.getMinutes();
+            if (currentTimeStr.equals(element))
+                showNotification(context, "Будильник", "Пора вставать, прям 100%");
+            else
+                newAlarms.add(element);
+        });
+        sharedPreferences.edit().putStringSet("time", newAlarms).apply();
 
     }
 
