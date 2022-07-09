@@ -22,4 +22,13 @@
     <style name="Theme.App.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.App.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="Theme.App.AppWidgetContainerParent" parent="@android:style/Theme.DeviceDefault">
+        <item name="appWidgetRadius">16dp</item>
+        <item name="appWidgetInnerRadius">8dp</item>
+    </style>
+
+    <style name="Theme.App.AppWidgetContainer" parent="Theme.App.AppWidgetContainerParent">
+        <item name="appWidgetPadding">16dp</item>
+    </style>
 </resources>
