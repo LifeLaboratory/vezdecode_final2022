@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "307339996375",
+    "project_id": "vkfinal2022",
+    "storage_bucket": "vkfinal2022.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:307339996375:android:4185aae15914d233b85492",
+        "android_client_info": {
+          "package_name": "ru.lifelaboratory"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "307339996375-igb3po5eoca150f9n6m9djojufg9tdrd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyArXQx5YH8b0zhkIPeOE3GF06Gv8QOa9hQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "307339996375-igb3po5eoca150f9n6m9djojufg9tdrd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
