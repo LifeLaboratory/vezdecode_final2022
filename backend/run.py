@@ -3,7 +3,7 @@ import string
 import random
 
 char = string.ascii_uppercase + string.digits + string.ascii_lowercase
-HOST, PORT = '89.208.198.171', '13452'
+HOST, PORT = '89.208.198.171', '12342'
 
 
 def post_image():
