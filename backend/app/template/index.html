@@ -1,0 +1,23 @@
+<html>
+  <head>
+    <title>{% block title %}Short site{% end %}</title>
+  </head>
+  <body>
+    Ваш URL
+    <form action="/" method="post">
+     <p><input type="text" name="url"></p>
+     <p><input type="submit" value="Отправить"></p>
+    </form>
+
+    {% if short_url %}
+      Сокращенная ссылка: <br>
+      <a href={{escape(short_url)}}>{{escape(short_url)}}</a>
+      <br>
+    {% end %}
+    {% if image %}
+      QR: <br>
+      <img src="data:image/png;base64,{{escape(image)}}" alt={{escape(image)}}>
+    {% end %}
+
+  </body>
+</html>

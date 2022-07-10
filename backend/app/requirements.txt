@@ -1,0 +1,7 @@
+tornado
+Ninja
+asynctnt
+tarantool
+requests
+Pillow
+opencv-python
