@@ -17,7 +17,7 @@ const Home = ({ id, go, fetchedUser }) => {
 	}
 
 	const getPhoto = () => {
-		axios.get(`https://034a-89-208-229-90.eu.ngrok.io/images`)
+		axios.get(`http://89.208.229.90:3012/images`)
 			.then(el => el.data)
 			.then(el => setDataImage(el))
 		console.log(dataImage)
@@ -43,7 +43,7 @@ const Home = ({ id, go, fetchedUser }) => {
 		// Fill with gradient
 		ctx.fillStyle = gradient;
 		ctx.fillText(textInput?.current?.value, 10, 70);
-		axios.post(`https://034a-89-208-229-90.eu.ngrok.io/images`, {
+		axios.post(`http://89.208.229.90:3012/images`, {
 			user: fetchedUser,
 			img:  ctx.canvas.toDataURL()
 		})
