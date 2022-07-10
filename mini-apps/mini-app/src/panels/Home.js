@@ -17,7 +17,7 @@ const Home = ({ id, go, fetchedUser }) => {
 	}
 
 	const getPhoto = () => {
-		axios.get(`https://aca1-92-38-163-23.ngrok.io/images`)
+		axios.get(`https://ngrok.src.arenacmd.com//images`)
 			.then(el => el.data)
 			.then(el => setDataImage(el))
 		console.log(dataImage)
@@ -43,7 +43,7 @@ const Home = ({ id, go, fetchedUser }) => {
 		// Fill with gradient
 		ctx.fillStyle = gradient;
 		ctx.fillText(textInput?.current?.value, 10, 70);
-		axios.post(`https://aca1-92-38-163-23.ngrok.io/images`, {
+		axios.post(`https://ngrok.src.arenacmd.com//images`, {
 			user: fetchedUser,
 			img:  ctx.canvas.toDataURL()
 		})
