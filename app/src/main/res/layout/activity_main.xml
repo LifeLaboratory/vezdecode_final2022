@@ -12,13 +12,30 @@
         android:layout_height="wrap_content"
         android:id="@+id/time" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:layout_width="200dp"
-        android:layout_height="50dp"
-        android:layout_gravity="center_horizontal"
-        android:background="@color/cardview_light_background"
-        android:id="@+id/btn_main"
-        android:text="Активировать" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@color/cardview_light_background"
+            android:id="@+id/btn_main"
+            android:text="Активировать" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@color/cardview_light_background"
+            android:id="@+id/btn_speech"
+            android:text="Распознать" />
+
+    </LinearLayout>
 
     <ListView
         android:layout_marginTop="15dp"
