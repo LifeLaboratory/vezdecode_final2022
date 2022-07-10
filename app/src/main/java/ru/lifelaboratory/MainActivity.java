@@ -141,6 +141,11 @@ public class MainActivity extends AppCompatActivity {
 
                         AlarmAdapter adapter = new AlarmAdapter(getApplicationContext(), R.layout.alarm_item, new ArrayList<>(sharedPreferences.getStringSet("time", new HashSet<>())));
                         productList.setAdapter(adapter);
+                    } else if (element.startsWith("стоп") || element.startsWith("Стоп")) {
+                        AlarmService.mediaPlayer.stop();
+                        AlarmService.mediaPlayer = null;
+                        finish();
+                        startActivity(getIntent());
                     }
                 });
             }
